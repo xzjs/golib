@@ -11,7 +11,7 @@ import (
 
 // ICache 接口列表
 type ICache interface {
-	Set(key string, val string, time int) (err error)
+	Set(key string, val string, time int64) (err error)
 	Get(key string) (val string, err error)
 	Del(key string) (err error)
 	Ins(key string) (err error)
@@ -61,10 +61,15 @@ func SetCache(c ICache) {
 }
 
 // Set set
-func (c *MyCache) Set(key string, val string, time int) (err error) {
+func (c *MyCache) Set(key string, val string, time int64) (err error) {
 	conn := c.Pool.Get()
 	defer conn.Close()
-	_, err = conn.Do("SETEX", key, time, val)
+	if time > 0 {
+		_, err = conn.Do("SETEX", key, time, val)
+	} else {
+		_, err = conn.Do("SET", key, val)
+	}
+
 	return
 }
 
