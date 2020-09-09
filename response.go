@@ -1,4 +1,4 @@
-package lib
+package golib
 
 // Response 返回结构体
 type Response struct {

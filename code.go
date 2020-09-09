@@ -1,4 +1,4 @@
-package lib
+package golib
 
 // SUCCESS 成功
 const SUCCESS = 1000

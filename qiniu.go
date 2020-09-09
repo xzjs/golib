@@ -1,4 +1,4 @@
-package lib
+package golib
 
 import (
 	"github.com/qiniu/api.v7/v7/auth/qbox"

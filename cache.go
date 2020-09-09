@@ -1,6 +1,6 @@
 //go:generate mockgen -destination ../mock/cache.go -package mock -source cache.go
 
-package lib
+package golib
 
 import (
 	"errors"
